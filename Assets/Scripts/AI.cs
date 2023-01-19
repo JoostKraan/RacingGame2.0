@@ -41,7 +41,7 @@ public class AI : MonoBehaviour
         float dot = Vector3.Dot(transform.forward, directionToTarget);
 
         float distance = Vector3.Distance(transform.position, targetPosition);
-        float minDistance = 10;
+        float minDistance = 6;
 
         if (distance > minDistance)
         {
@@ -92,23 +92,19 @@ public class AI : MonoBehaviour
             newlapbrake.active = true;
         }
     }
-    private void OnTriggerEnter(Collider other)
-    {
+    //private void OnTriggerEnter(Collider other)
+    //{
        
-        if (other.gameObject.CompareTag("brake"))
-        {
-            movement.activatebrake(braking);
-            wl.brakeForce = 1000f;
-        }
-        else
-        {
-            movement.disablebrake(braking);
-        }
-
-        
-        
-
-    }
+    //    if (other.gameObject.CompareTag("brake"))
+    //    {
+    //        movement.activatebrake(braking);
+    //        wl.brakeForce = 1000f;
+    //    }
+    //    else
+    //    {
+    //        movement.disablebrake(braking);
+    //    }
+    //}
     IEnumerator CalculateSpeed()
     {
         Vector3 lastPosition = transform.position;

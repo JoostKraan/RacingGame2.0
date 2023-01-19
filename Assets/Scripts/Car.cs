@@ -17,6 +17,8 @@ public class Car : MonoBehaviour
     public float throttle { get; set; }
     private Rigidbody _rigidbody;
     private Wheel[] wheels;
+
+    [SerializeField] private LapTimer finish;
     
 
     [Header("Level Variables")]
@@ -31,10 +33,6 @@ public class Car : MonoBehaviour
         wheels = GetComponentsInChildren<Wheel>();
         _rigidbody = GetComponent<Rigidbody>();
         _rigidbody.centerOfMass = centerOfMass.localPosition;
-    }
-    public void FixedUpdate()
-    {
-
     }
     public void ChangeSpeed(float throttle)
     {
@@ -89,6 +87,7 @@ public class Car : MonoBehaviour
         if (checkPointCounter > checkPoints.Length - 1)
         {
             checkPointCounter = 0;
+            finish.CanFinishOn();
         }
         currentCheckPoint = checkPoints[checkPointCounter];
         return currentCheckPoint;
