@@ -41,7 +41,7 @@ public class AI : MonoBehaviour
         float dot = Vector3.Dot(transform.forward, directionToTarget);
 
         float distance = Vector3.Distance(transform.position, targetPosition);
-        float minDistance = 6;
+        float minDistance = 10;
 
         if (distance > minDistance)
         {

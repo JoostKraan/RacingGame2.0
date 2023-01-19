@@ -21,7 +21,6 @@ public class LapTimer : MonoBehaviour
         {
             timerTime += Time.deltaTime;
         }
-        
         timerText.text = "Laptime: " + timerTime.ToString();
         currentLapText.text = "Current lap: " + currentLapCounter.ToString();
     }
@@ -37,9 +36,7 @@ public class LapTimer : MonoBehaviour
                 canFinish = false;
             }
         }
-
     }
-
     public void CanFinishOn()
     {
         canFinish = true;

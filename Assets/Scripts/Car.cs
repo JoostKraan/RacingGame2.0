@@ -18,8 +18,7 @@ public class Car : MonoBehaviour
     private Rigidbody _rigidbody;
     private Wheel[] wheels;
 
-    [SerializeField] private LapTimer finish;
-    
+    [SerializeField] private LapTimer finish;    
 
     [Header("Level Variables")]
     public GameObject[] checkPoints;
@@ -81,16 +80,17 @@ public class Car : MonoBehaviour
         yield return new WaitForFixedUpdate();
         currentspeed = (lastPosition - transform.position).magnitude / Time.deltaTime;
     }
+    
     public GameObject NextCheckpoint()
     {
-        checkPointCounter++;
-        if (checkPointCounter > checkPoints.Length - 1)
-        {
+            checkPointCounter++;
+            if (checkPointCounter > checkPoints.Length - 1)
+            {
+            LapTimer lapTimer = FindObjectOfType<LapTimer>();
+            lapTimer.CanFinishOn();
             checkPointCounter = 0;
-            finish.CanFinishOn();
-        }
-        currentCheckPoint = checkPoints[checkPointCounter];
-        return currentCheckPoint;
-    }
-    
+            }
+            currentCheckPoint = checkPoints[checkPointCounter];
+            return currentCheckPoint;
+    }    
 }
