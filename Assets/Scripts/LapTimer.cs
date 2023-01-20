@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 
@@ -21,7 +22,7 @@ public class LapTimer : MonoBehaviour
         {
             timerTime += Time.deltaTime;
         }
-        timerText.text = "Laptime: " + timerTime.ToString();
+        timerText.text = "Laptime: " + timerTime.ToString("0.000 ");
         currentLapText.text = "Current lap: " + currentLapCounter.ToString();
     }
     private void OnTriggerEnter(Collider other)

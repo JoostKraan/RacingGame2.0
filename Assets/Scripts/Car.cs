@@ -83,14 +83,15 @@ public class Car : MonoBehaviour
     
     public GameObject NextCheckpoint()
     {
-            checkPointCounter++;
-            if (checkPointCounter > checkPoints.Length - 1)
-            {
+        checkPointCounter++;
+        print(checkPointCounter);
+        if (checkPointCounter > checkPoints.Length - 1)
+        {
             LapTimer lapTimer = FindObjectOfType<LapTimer>();
             lapTimer.CanFinishOn();
             checkPointCounter = 0;
-            }
-            currentCheckPoint = checkPoints[checkPointCounter];
-            return currentCheckPoint;
+        }
+        currentCheckPoint = checkPoints[checkPointCounter];
+        return currentCheckPoint;
     }    
 }
