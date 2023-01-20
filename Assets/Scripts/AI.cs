@@ -6,7 +6,7 @@ public class AI : MonoBehaviour
 {
 
     [Header("Input Variables")]
-    Car movement;
+    Car car;
     
     Wheel wl;
     public float forwards;
@@ -25,9 +25,9 @@ public class AI : MonoBehaviour
 
     void Awake()
     {
-        movement = GetComponent<Car>();
+        car = GetComponent<Car>();
         wl = GetComponent<Wheel>();
-        targetPositionTransform = movement.checkPoints[0].transform;
+        targetPositionTransform = car.checkPoints[0].transform;
     }
 
     void FixedUpdate()
@@ -68,19 +68,19 @@ public class AI : MonoBehaviour
         }        
         else
         {
-            targetPositionTransform = movement.NextCheckpoint().transform;
+            targetPositionTransform = car.NextCheckpoint().transform;
         }
 
         if (currentspeed < 18)
         {
-            movement.disablebrake(braking);
+            car.disablebrake(braking);
         }
 
         
 
 
-        movement.ChangeSpeed(forwards);
-        movement.Turn(turn);
+        car.ChangeSpeed(forwards);
+        car.Turn(turn);
         StartCoroutine(CalculateSpeed());
     }
     public void Update()
@@ -97,12 +97,12 @@ public class AI : MonoBehaviour
        
     //    if (other.gameObject.CompareTag("brake"))
     //    {
-    //        movement.activatebrake(braking);
+    //        car.activatebrake(braking);
     //        wl.brakeForce = 1000f;
     //    }
     //    else
     //    {
-    //        movement.disablebrake(braking);
+    //        car.disablebrake(braking);
     //    }
     //}
     IEnumerator CalculateSpeed()

@@ -8,25 +8,15 @@ public class playerCheckpoints : MonoBehaviour
     void Start()
     {
         car = GetComponent<Car>();
+        car.checkPoints[car.checkPointCounter].GetComponent<MeshRenderer>().enabled = true;
     }
     private void Update()
     {
-        car.checkPoints[car.checkPointCounter].GetComponent<MeshRenderer>().enabled = true;
-        if (car.checkPointCounter == 0)
+        foreach (var cp in car.checkPoints)
         {
-            if (car.checkPoints[car.checkPoints.Length-1].GetComponent<MeshRenderer>().enabled == true)
-            {
-                car.checkPoints[car.checkPoints.Length - 1].GetComponent<MeshRenderer>().enabled = false;
-            }
-            //car.checkPoints.Length; 
-            //car.checkPoints[car.checkPointCounter].GetComponent<MeshRenderer>().enabled = false;
-            print("0");
+            cp.SetActive(false);
         }
-        else
-        {
-            car.checkPoints[car.checkPointCounter - 1].GetComponent<MeshRenderer>().enabled = false;
-        }
- 
+        car.checkPoints[car.checkPointCounter].SetActive(true);
     }   
 
     private void OnTriggerEnter(Collider other)

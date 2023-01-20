@@ -22,8 +22,6 @@ public class InputController : MonoBehaviour
     }
     void Update()
     {
-        //SteerInput = Input.GetAxis(InputsteerAxis);
-        //Throttleinput = Input.GetAxis(InputthrottleAxis);
         Forwards = Input.GetAxis("Vertical");
         Steering = Input.GetAxis("Horizontal");
 

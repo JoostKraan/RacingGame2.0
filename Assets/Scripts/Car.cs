@@ -31,6 +31,7 @@ public class Car : MonoBehaviour
 
     void Start()
     {
+        checkPoints[0].SetActive(true);
         wheels = GetComponentsInChildren<Wheel>();
         _rigidbody = GetComponent<Rigidbody>();
         _rigidbody.centerOfMass = centerOfMass.localPosition;
@@ -71,13 +72,6 @@ public class Car : MonoBehaviour
 
     void Update()
     {
-        //steer = Gamemaneger.Instance.Inputcontroller.SteerInput;
-        //throttle = Gamemaneger.Instance.Inputcontroller.Throttleinput;
-        //foreach (var wheel in wheels)
-        //{
-            //wheel.Steerangle = steer * maxSteer;
-            //wheel.Torque = throttle * motorTorque;
-        //}
         StartCoroutine(CalculateSpeed());
     }
     IEnumerator CalculateSpeed()
@@ -90,14 +84,14 @@ public class Car : MonoBehaviour
     public GameObject NextCheckpoint()
     {
         checkPointCounter++;
-        if (checkPointCounter > checkPoints.Length - 1)
+
+        if (checkPointCounter == checkPoints.Length)
         {
             LapTimer lapTimer = FindObjectOfType<LapTimer>();
             lapTimer.CanFinishOn();
             checkPointCounter = 0;
         }
         currentCheckPoint = checkPoints[checkPointCounter];
-
         return currentCheckPoint;
     }    
 }
