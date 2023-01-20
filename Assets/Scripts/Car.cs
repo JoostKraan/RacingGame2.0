@@ -17,6 +17,8 @@ public class Car : MonoBehaviour
     public float throttle { get; set; }
     private Rigidbody _rigidbody;
     private Wheel[] wheels;
+    [SerializeField] private Light BackLight1;
+    [SerializeField] private Light BackLight2;
 
     [SerializeField] private LapTimer finish;    
 
@@ -52,8 +54,10 @@ public class Car : MonoBehaviour
     {
         foreach (var wheel in wheels)
         {
-            wheel.brakeForce = 10000f;
-        }         
+            wheel.brakeForce = 700f;
+        }
+        BackLight1.enabled = true;
+        BackLight2.enabled = true;
     }
     public void disablebrake(float brake)
     {
@@ -61,6 +65,8 @@ public class Car : MonoBehaviour
         {
             wheel.brakeForce = 0f;
         }
+        BackLight1.enabled = false;
+        BackLight2.enabled = false;
     }
 
     void Update()
@@ -84,7 +90,6 @@ public class Car : MonoBehaviour
     public GameObject NextCheckpoint()
     {
         checkPointCounter++;
-        print(checkPointCounter);
         if (checkPointCounter > checkPoints.Length - 1)
         {
             LapTimer lapTimer = FindObjectOfType<LapTimer>();
@@ -92,6 +97,7 @@ public class Car : MonoBehaviour
             checkPointCounter = 0;
         }
         currentCheckPoint = checkPoints[checkPointCounter];
+
         return currentCheckPoint;
     }    
 }

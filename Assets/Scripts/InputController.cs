@@ -8,6 +8,7 @@ public class InputController : MonoBehaviour
     public string InputthrottleAxis = "Vertical";
 
     Car car;
+    Rigidbody rb;
     public float Throttleinput { get; private set; }
     public float SteerInput { get; private set; }
 
@@ -17,9 +18,8 @@ public class InputController : MonoBehaviour
     void Awake()
     {
         car = GetComponent<Car>();
+        rb = GetComponent<Rigidbody>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         //SteerInput = Input.GetAxis(InputsteerAxis);
@@ -32,9 +32,11 @@ public class InputController : MonoBehaviour
         if(Input.GetKey(KeyCode.Space))
         {
             car.activatebrake(braking);
+            //rb.drag = 0.15f;
         }
         else
         {
+            //rb.drag = 0.5f;
             car.disablebrake(braking);
         }
     }
