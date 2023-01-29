@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Car : MonoBehaviour
+public class CarController : MonoBehaviour
 {
     public Transform centerOfMass;
     public float motorTorque = 500f;
@@ -15,7 +15,7 @@ public class Car : MonoBehaviour
 
     public float steer { get; set; }
     public float throttle { get; set; }
-    private Rigidbody _rigidbody;
+    private Rigidbody rb;
     private Wheel[] wheels;
     [SerializeField] private Light BackLight1;
     [SerializeField] private Light BackLight2;
@@ -26,15 +26,13 @@ public class Car : MonoBehaviour
     public GameObject[] checkPoints;
     public GameObject currentCheckPoint;
     public int checkPointCounter = 0;
-    
-
 
     void Start()
     {
         checkPoints[0].SetActive(true);
         wheels = GetComponentsInChildren<Wheel>();
-        _rigidbody = GetComponent<Rigidbody>();
-        _rigidbody.centerOfMass = centerOfMass.localPosition;
+        rb = GetComponent<Rigidbody>();
+        rb.centerOfMass = centerOfMass.localPosition;
     }
     public void ChangeSpeed(float throttle)
     {

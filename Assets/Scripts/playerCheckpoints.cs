@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class playerCheckpoints : MonoBehaviour
 {
-    Car car;
+    CarController carController;
     void Start()
     {
-        car = GetComponent<Car>();
-        car.checkPoints[car.checkPointCounter].GetComponent<MeshRenderer>().enabled = true;
+        carController = GetComponent<CarController>();
+        carController.checkPoints[carController.checkPointCounter].GetComponent<MeshRenderer>().enabled = true;
     }
     private void Update()
     {
-        foreach (var cp in car.checkPoints)
+        foreach (var cp in carController.checkPoints)
         {
             cp.SetActive(false);
         }
-        car.checkPoints[car.checkPointCounter].SetActive(true);
+        carController.checkPoints[carController.checkPointCounter].SetActive(true);
     }   
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Checkpoint"))
         {
-            car.NextCheckpoint();
+            carController.NextCheckpoint();
         }
     }
 }

@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LapTimer : MonoBehaviour
 {
     [SerializeField] TMP_Text timerText;
     [SerializeField] TMP_Text currentLapText;
-    [SerializeField] Car checkpoints;
+    [SerializeField] CarController checkpoints;
 
     private float timerTime;
     private int currentLapCounter = 0;
     private bool timerOn;
+    private int maxLaps = 2;
 
     private bool canFinish = true;
 
@@ -24,6 +26,11 @@ public class LapTimer : MonoBehaviour
         }
         timerText.text = "Laptime: " + timerTime.ToString("0.000 ");
         currentLapText.text = "Current lap: " + currentLapCounter.ToString();
+        if(currentLapCounter == maxLaps)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        
     }
     private void OnTriggerEnter(Collider other)
     {

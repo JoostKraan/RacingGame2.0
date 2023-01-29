@@ -6,9 +6,7 @@ public class AI : MonoBehaviour
 {
 
     [Header("Input Variables")]
-    Car car;
-    
-    Wheel wl;
+    CarController carController;
     public float forwards;
     public float turn;
     public float braking;
@@ -23,16 +21,14 @@ public class AI : MonoBehaviour
     [Header("Level Variables")]
     private Transform targetPositionTransform;
 
-    void Awake()
+    private void Awake()
     {
-        car = GetComponent<Car>();
-        wl = GetComponent<Wheel>();
-        targetPositionTransform = car.checkPoints[0].transform;
+        carController = GetComponent<CarController>();
+        targetPositionTransform = carController.checkPoints[0].transform;
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        
         Vector3 targetPosition = targetPositionTransform.position;
         float forwards = 0;
         float turn = 0;
@@ -53,10 +49,7 @@ public class AI : MonoBehaviour
             {
                 forwards = -1;
             }
-
-
             float angle = Vector3.SignedAngle(transform.forward, directionToTarget, Vector3.up);
-
             if (angle > 5)
             {
                 turn = 1;
@@ -68,43 +61,25 @@ public class AI : MonoBehaviour
         }        
         else
         {
-            targetPositionTransform = car.NextCheckpoint().transform;
+            targetPositionTransform = carController.NextCheckpoint().transform;
         }
 
         if (currentspeed < 18)
         {
-            car.disablebrake(braking);
+            carController.disablebrake(braking);
         }
-
-        
-
-
-        car.ChangeSpeed(forwards);
-        car.Turn(turn);
+        carController.ChangeSpeed(forwards);
+        carController.Turn(turn);
         StartCoroutine(CalculateSpeed());
     }
     public void Update()
     {
-        //timeleft = 10f;
         timeleft -= Time.deltaTime;
         if (timeleft < 1)
         {
             newlapbrake.active = true;
         }
     }
-    //private void OnTriggerEnter(Collider other)
-    //{
-       
-    //    if (other.gameObject.CompareTag("brake"))
-    //    {
-    //        car.activatebrake(braking);
-    //        wl.brakeForce = 1000f;
-    //    }
-    //    else
-    //    {
-    //        car.disablebrake(braking);
-    //    }
-    //}
     IEnumerator CalculateSpeed()
     {
         Vector3 lastPosition = transform.position;

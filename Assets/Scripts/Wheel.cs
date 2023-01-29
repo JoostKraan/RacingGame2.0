@@ -17,10 +17,7 @@ public class Wheel : MonoBehaviour
     private Transform wheelTransform;
 
     [SerializeField] private Quaternion wheelRotation;
-
-
-
-    void Start()
+    private void Start()
     {
         wheelCollider = GetComponentInChildren<WheelCollider>();
         wheelTransform = GetComponentInChildren<MeshRenderer>().GetComponent<Transform>();
@@ -29,8 +26,7 @@ public class Wheel : MonoBehaviour
     void Update()
     {
         wheelCollider.GetWorldPose(out Vector3 pos, out Quaternion rot);
-        wheelTransform.position = pos;
-        wheelTransform.rotation = rot * wheelRotation;
+        wheelTransform.SetPositionAndRotation(pos, rot * wheelRotation);
     }
     void FixedUpdate()
     {
