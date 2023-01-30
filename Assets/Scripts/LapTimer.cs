@@ -28,9 +28,9 @@ public class LapTimer : MonoBehaviour
         currentLapText.text = "Current lap: " + currentLapCounter.ToString();
         if(currentLapCounter == maxLaps)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene(0);
         }
-        
+
     }
     private void OnTriggerEnter(Collider other)
     {
