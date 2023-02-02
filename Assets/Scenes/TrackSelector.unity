@@ -514,6 +514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b84576e9c5f354c800c814e8d730c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameInput: {fileID: 0}
 --- !u!114 &1041610570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,6 +616,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1416413448775041738, guid: 1adffccbb3733ce4db6cb13f2fc1b59d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 149
+      objectReference: {fileID: 0}
     - target: {fileID: 2139489271015442114, guid: 1adffccbb3733ce4db6cb13f2fc1b59d,
         type: 3}
       propertyPath: m_Color.b
