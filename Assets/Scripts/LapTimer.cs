@@ -25,7 +25,7 @@ public class LapTimer : MonoBehaviour
             timerTime += Time.deltaTime;
         }
         timerText.text = "Laptime: " + timerTime.ToString("0.000 ");
-        currentLapText.text = "Current lap: " + currentLapCounter.ToString();
+        currentLapText.text = "Current lap: " + currentLapCounter.ToString() + "/1";
         if(currentLapCounter == maxLaps)
         {
             SceneManager.LoadScene(0);

@@ -4,7 +4,7 @@ public class Recover : MonoBehaviour
 {
     private CarController carController;
     private GameObject spawnObject;
-
+    [SerializeField] GameObject carObject;
     void Start()
     {
         carController = GetComponent<CarController>();
@@ -21,6 +21,11 @@ public class Recover : MonoBehaviour
             }
             spawnObject = carController.checkPoints[lastCheckpoint];
             transform.position = spawnObject.transform.position;
+            Vector3 currentRotation = transform.rotation.eulerAngles;
+            currentRotation.x = 0;
+            currentRotation.z = 0;
+            transform.rotation = Quaternion.Euler(currentRotation);
+
         }
     }
 }

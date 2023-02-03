@@ -97,8 +97,10 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 3646761677abb3f47a7e040cc0a8759c,
+    type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 10682f6d9ddfbf04cb69c123e77dc6ae,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -385,6 +387,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5763306016547574335, guid: a9ed300128174d54a8fbf5b3daceca95,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f1142ddd4bc74854fbac54d599022928, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9ed300128174d54a8fbf5b3daceca95, type: 3}
 --- !u!1 &467211544
@@ -499,7 +506,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -110}
+  m_AnchoredPosition: {x: 0, y: -30}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1041610569
@@ -641,6 +648,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Track1
       objectReference: {fileID: 0}
+    - target: {fileID: 2139489271015442173, guid: 1adffccbb3733ce4db6cb13f2fc1b59d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2139489271927763618, guid: 1adffccbb3733ce4db6cb13f2fc1b59d,
         type: 3}
       propertyPath: m_Color.a
@@ -774,6 +786,11 @@ PrefabInstance:
     - target: {fileID: 2139489272714068592, guid: 1adffccbb3733ce4db6cb13f2fc1b59d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764269651643992766, guid: 1adffccbb3733ce4db6cb13f2fc1b59d,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
